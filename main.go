@@ -12,15 +12,19 @@ import (
 	"golang.org/x/oauth2"
 )
 
-const outFilePathArg string = "out_file"
-const redirectURIArg string = "redirect_uri"
-const spotifyIDArg string = "spotify_id"
-const spotifySecretArg string = "spotify_secret"
+const (
+	outFilePathArg   string = "out_file"
+	redirectURIArg   string = "redirect_uri"
+	spotifyIDArg     string = "spotify_id"
+	spotifySecretArg string = "spotify_secret"
+)
 
-var outFilePath string
-var redirectURI string
-var spotifyID string
-var spotifySecret string
+var (
+	outFilePath   string
+	redirectURI   string
+	spotifyID     string
+	spotifySecret string
+)
 
 func init() {
 	flag.StringVar(&outFilePath, outFilePathArg, "", "Path to file where Spotify auth token will be saved")
