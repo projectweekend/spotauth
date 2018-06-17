@@ -60,11 +60,11 @@ func main() {
 
 	client := <-ch
 
-	user, err := client.CurrentUser()
+	_, err := client.CurrentUser()
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println("You are logged in as:", user.ID)
+	fmt.Println("Login successful! Token info written to:", outFilePath)
 }
 
 func makeCompleteAuthHandler(auth spotify.Authenticator, ch chan *spotify.Client) func(http.ResponseWriter, *http.Request) {
