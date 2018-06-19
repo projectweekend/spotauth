@@ -44,7 +44,7 @@ func init() {
 
 func main() {
 
-	auth := spotify.NewAuthenticator(redirectURI, spotify.ScopeUserReadPrivate)
+	auth := spotify.NewAuthenticator(redirectURI, spotify.ScopeUserReadPrivate, spotify.ScopeUserReadRecentlyPlayed)
 	auth.SetAuthInfo(spotifyID, spotifySecret)
 
 	ch := make(chan *spotify.Client)
