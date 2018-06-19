@@ -27,8 +27,8 @@ var (
 )
 
 func init() {
-	flag.StringVar(&outFilePath, outFilePathArg, "spotify.json", "Path to file where Spotify auth token will be saved - default: spotify.json")
-	flag.StringVar(&redirectURI, redirectURIArg, "http://localhost:8080/callback", "Redirect URI for Spotify app - default: http://localhost:8080/callback")
+	flag.StringVar(&outFilePath, outFilePathArg, "spotify.json", "Path to file where Spotify auth token will be saved")
+	flag.StringVar(&redirectURI, redirectURIArg, "http://localhost:8080/callback", "Redirect URI for Spotify app")
 	flag.StringVar(&spotifyID, spotifyIDArg, "", "Spotify app ID")
 	flag.StringVar(&spotifySecret, spotifySecretArg, "", "Spotify app secret")
 	flag.Parse()
@@ -84,7 +84,7 @@ func makeCompleteAuthHandler(auth spotify.Authenticator, ch chan *spotify.Client
 }
 
 func writeAuthTokenToFile(filePath string, token *oauth2.Token) {
-	j, _ := json.Marshal(token)
+	j, _ := json.MarshalIndent(token, "", "  ")
 	err := ioutil.WriteFile(filePath, j, 0644)
 	if err != nil {
 		log.Fatal(err)
